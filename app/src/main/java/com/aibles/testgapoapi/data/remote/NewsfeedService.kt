@@ -1,5 +1,6 @@
 package com.aibles.testgapoapi.data.remote
 
+import com.aibles.testgapoapi.domain.entity.DetailNews
 import com.aibles.testgapoapi.domain.entity.ListNewsfeed
 import retrofit2.Call
 import retrofit2.http.GET
@@ -7,4 +8,7 @@ import retrofit2.http.GET
 interface NewsfeedService {
     @GET("newsfeed.json")
     fun getNewsfeed() : Call<ListNewsfeed>
+
+    @GET("detail.json")
+    fun getDetailNews() : Call<DetailNews>
 }

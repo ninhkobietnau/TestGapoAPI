@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/newsfeedFragment">
+    <fragment
+        android:id="@+id/newsfeedFragment"
+        android:name="com.aibles.testgapoapi.presentation.fragment.NewsfeedFragment"
+        android:label="fragment_news_feed"
+        tools:layout="@layout/fragment_news_feed" >
+        <action
+            android:id="@+id/action_newsfeedFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.aibles.testgapoapi.presentation.fragment.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="detail"
+            android:defaultValue=""
+            app:argType="string"
+            />
+    </fragment>
 </navigation>

@@ -1,17 +1,16 @@
 package com.aibles.testgapoapi.data.remote
 
+import com.aibles.testgapoapi.view.utils.Constants.Companion.BASE_URL
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ServiceBuilder {
-    private const val URL = "https://raw.githubusercontent.com/Akaizz/static/master/"
-
     private val okHttp = OkHttpClient.Builder()
 
     private val builder = Retrofit
         .Builder()
-        .baseUrl(URL)
+        .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .client(okHttp.build())
 

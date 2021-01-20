@@ -1,22 +1,23 @@
 package com.aibles.testgapoapi.presentation.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.aibles.testgapoapi.R
-import com.aibles.testgapoapi.domain.entity.ListNewsfeed
+import com.aibles.testgapoapi.databinding.NewsfeedItemBinding
 import com.aibles.testgapoapi.domain.entity.ListNewsfeed.Newsfeed
+import com.aibles.testgapoapi.presentation.viewmodel.NewsfeedViewModel
 
 class NewsfeedAdapter(
-    private val newsfeedList: List<Newsfeed>
-    ) :RecyclerView.Adapter<NewsfeedAdapter.ViewHolder>(){
+    private val newsfeedViewModel: NewsfeedViewModel
+    ) :RecyclerView.Adapter<NewsfeedViewHolder>(){
+
+    var newsfeedList: List<Newsfeed> = emptyList()
 
     @Override
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.newsfeed_item,parent,false)
-        return ViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsfeedViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        val dataBinding = NewsfeedItemBinding.inflate(inflater, parent, false)
+        return NewsfeedViewHolder(dataBinding, newsfeedViewModel)
     }
 
     override fun getItemCount(): Int {
@@ -24,16 +25,12 @@ class NewsfeedAdapter(
     }
 
     @Override
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: NewsfeedViewHolder, position: Int) {
         return holder.bind(newsfeedList[position])
     }
 
-    class ViewHolder (items : View) :RecyclerView.ViewHolder(items) {
-        var tvTitle = items.findViewById<TextView>(R.id.tvTitle)
-        var tvContentType = items.findViewById<TextView>(R.id.tvContentType)
-        fun bind (newsfeed: Newsfeed) {
-            tvContentType.text = newsfeed.content_type
-            tvTitle.text = newsfeed.title
-        }
+    fun updateListNewsfeed(newsfeed: List<Newsfeed>) {
+        newsfeedList = newsfeed
+        notifyDataSetChanged()
     }
 }

@@ -1,14 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.fragment.DetailFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.aibles.testgapoapi.presentation.viewmodel.DetailViewModel" />
+    </data>
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        tools:context="com.aibles.testgapoapi.presentation.fragment.DetailFragment">
 
-</FrameLayout>
+        <TextView
+            android:layout_marginTop="150dp"
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewmodel.detailNews.title}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@{viewmodel.detailNews.description}"
+            android:layout_height="wrap_content"/>
+
+<!--        <ImageView-->
+<!--            android:id="@+id/image_icon"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            android:layout_height="wrap_content"/>-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            android:text="@{viewmodel.detailNews.Section[0].Content.caption}"-->
+<!--            android:layout_height="wrap_content"/>-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            android:text="@{viewmodel.detailNews.Section.Content.text}"-->
+<!--            android:layout_height="wrap_content"/>-->
+    </LinearLayout>
+</layout>
+
+
